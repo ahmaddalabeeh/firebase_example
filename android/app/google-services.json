@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "243158214975",
+    "project_id": "zaidapp-db834",
+    "storage_bucket": "zaidapp-db834.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243158214975:android:67e9216a053098dc210b8a",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243158214975-8f4i0tj4ag5dmmab0o66nrl2588s30e6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpQvgVSiIavKy9kICP3DqdGYBVZKJcxcM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243158214975-8f4i0tj4ag5dmmab0o66nrl2588s30e6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
