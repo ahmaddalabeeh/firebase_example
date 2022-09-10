@@ -1,39 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../../widgets/custom_text_form_field.dart';
-import '../../widgets/styled_button.dart';
+import '../providers/auth_provider.dart';
+import '../widgets/custom_text_form_field.dart';
+import '../widgets/styled_button.dart';
 
-class LoginScreen extends StatefulWidget {
-  static const String routeName = "/loginScreen";
-
-  const LoginScreen({Key? key}) : super(key: key);
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  late AuthProvider authProvider;
-
-  @override
-  void initState() {
-    super.initState();
-    authProvider = Provider.of<AuthProvider>(context, listen: false);
-    authProvider.emailController = TextEditingController();
-    authProvider.passwordController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    authProvider.emailController.dispose();
-    authProvider.passwordController.dispose();
-    super.dispose();
-  }
+class RegisterScreen extends StatelessWidget {
+  static const routeName = "/register";
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+
     return Scaffold(
       body: Center(
           child: Column(
@@ -57,9 +36,9 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           StyledButton(
             onPressed: () {
-              authProvider.loginWithEmailAndPassword(context);
+              authProvider.createWithEmailAndPassword(context);
             },
-            child: const Icon(Icons.login),
+            child: const Icon(Icons.app_registration),
           )
         ],
       )),
