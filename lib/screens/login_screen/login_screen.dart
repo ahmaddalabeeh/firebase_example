@@ -16,6 +16,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   late AuthProvider authProvider;
+  late GlobalKey<FormState> formKey;
 
   @override
   void initState() {
@@ -23,6 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
     authProvider = Provider.of<AuthProvider>(context, listen: false);
     authProvider.emailController = TextEditingController();
     authProvider.passwordController = TextEditingController();
+    formKey = GlobalKey<FormState>();
   }
 
   @override
@@ -36,32 +38,37 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CustomTextFormField(
-            controller: authProvider.emailController,
-            type: TextInputType.emailAddress,
-            hint: "Please enter your email address",
-            empty: "Your E-mail address",
-            icon: const Icon(Icons.email),
-            txt: false,
-          ),
-          CustomTextFormField(
-            controller: authProvider.passwordController,
-            type: TextInputType.visiblePassword,
-            hint: "Please enter your password",
-            empty: "Password",
-            icon: const Icon(Icons.password),
-            txt: true,
-          ),
-          StyledButton(
-            onPressed: () {
-              authProvider.loginWithEmailAndPassword(context);
-            },
-            child: const Icon(Icons.login),
-          )
-        ],
+          child: Form(
+        key: formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CustomTextFormField(
+              controller: authProvider.emailController,
+              type: TextInputType.emailAddress,
+              hint: "Please enter your email address",
+              empty: "Your E-mail address",
+              icon: const Icon(Icons.email),
+              txt: false,
+            ),
+            CustomTextFormField(
+              controller: authProvider.passwordController,
+              type: TextInputType.visiblePassword,
+              hint: "Please enter your password",
+              empty: "Password",
+              icon: const Icon(Icons.password),
+              txt: true,
+            ),
+            StyledButton(
+              onPressed: () {
+                if (formKey.currentState?.validate() ?? false) {
+                  authProvider.loginWithEmailAndPassword(context);
+                }
+              },
+              child: const Icon(Icons.login),
+            )
+          ],
+        ),
       )),
     );
   }
