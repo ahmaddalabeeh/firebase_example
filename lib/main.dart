@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: appProviders,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: "Firebase",
         initialRoute: SplashScreen.routeName,
         routes: appRoutes,
